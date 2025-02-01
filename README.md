@@ -141,14 +141,4 @@ A aplicação inclui tratamento abrangente de erros:
 - Tratamento de erros de autenticação
 - Tratamento de erros de rede
 
-## Como Contribuir
 
-1. Faça um fork do repositório
-2. Crie uma branch para sua feature
-3. Faça commit das suas alterações
-4. Faça push para a branch
-5. Crie um Pull Request
-
-## Licença
-
-Este projeto está licenciado sob a Licença MIT.
