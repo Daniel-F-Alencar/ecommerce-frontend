@@ -1,59 +1,154 @@
-# Frontend
+# Frontend eCommerce
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.5.
+Este projeto é um frontend em Angular para uma API de eCommerce. Ele fornece uma interface moderna e responsiva para gerenciamento de produtos com autenticação.
 
-## Development server
+## Funcionalidades
 
-To start a local development server, run:
+- Autenticação de Usuário (Login/Registro)
+- Gerenciamento de Produtos:
+  - Visualização de produtos em grid responsivo
+  - Criação de novos produtos
+  - Edição de produtos existentes
+  - Exclusão de produtos
+- Autenticação baseada em JWT
+- Interface Material Design
+- Layout responsivo
+- Validação de formulários
+- Tratamento de erros
 
-```bash
-ng serve
+## Arquitetura do Projeto
+
+### Componentes Principais
+
+1. **Módulo de Autenticação**
+   - Componente de Login
+   - Componente de Registro
+   - Serviço de Autenticação para gerenciamento JWT
+   - Interceptor HTTP para manipulação de tokens
+
+2. **Módulo de Produtos**
+   - Componente de Lista de Produtos
+   - Diálogo de Criação de Produto
+   - Diálogo de Edição de Produto
+   - Serviço de Produtos
+
+### Stack Tecnológica
+
+- Angular 17
+- Angular Material UI
+- RxJS para gerenciamento de estado
+- TypeScript
+- SCSS para estilização
+
+### Estrutura do Projeto
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── auth/
+│   │   │   ├── login/
+│   │   │   └── register/
+│   │   └── products/
+│   │       ├── product-list/
+│   │       ├── create-product-dialog/
+│   │       └── edit-product-dialog/
+│   ├── services/
+│   │   ├── auth.service.ts
+│   │   └── product.service.ts
+│   ├── interceptors/
+│   │   └── auth.interceptor.ts
+│   └── app.routes.ts
+└── styles.scss
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Pré-requisitos
 
-## Code scaffolding
+- Node.js (v18 ou superior)
+- npm (v9 ou superior)
+- Angular CLI (v17 ou superior)
+- Servidor backend Flask em execução
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Instalação
 
-```bash
-ng generate component component-name
-```
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositório>
+   cd eCommerce_frontend
+   ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
 
-```bash
-ng generate --help
-```
+3. Inicie o servidor de desenvolvimento:
+   ```bash
+   ng serve
+   ```
 
-## Building
+4. Abra seu navegador e acesse `http://localhost:4200`
 
-To build the project run:
+## Configuração da API
 
-```bash
-ng build
-```
+O frontend está configurado para se conectar a um backend Flask em `http://127.0.0.1:5000`. Os seguintes endpoints são utilizados:
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- `POST /api/auth/register` - Registro de usuário
+- `POST /api/auth/login` - Login de usuário
+- `GET /api/products` - Obter todos os produtos
+- `POST /api/products` - Criar novo produto
+- `PUT /api/products/{id}` - Atualizar produto
+- `DELETE /api/products/{id}` - Excluir produto
 
-## Running unit tests
+## Autenticação
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+A aplicação utiliza autenticação JWT (JSON Web Token):
+1. Tokens são armazenados no localStorage
+2. Requisições para endpoints protegidos incluem o token no cabeçalho Authorization
+3. O interceptor de autenticação trata respostas 401/422 redirecionando para a página de login
 
-```bash
-ng test
-```
+## Componentes de Interface
 
-## Running end-to-end tests
+A aplicação utiliza componentes do Angular Material para uma aparência consistente e moderna:
+- MatCard para exibição de produtos
+- MatDialog para formulários
+- MatSnackBar para notificações
+- MatFormField para campos de formulário
+- MatButton para ações
+- MatIcon para indicadores visuais
 
-For end-to-end (e2e) testing, run:
+## Desenvolvimento
 
-```bash
-ng e2e
-```
+### Estilo de Código
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+- Componentes standalone
+- Formulários reativos para entrada de dados
+- Tipagem forte com TypeScript
+- SCSS para estilização
+- Metodologia BEM para classes CSS
 
-## Additional Resources
+### Gerenciamento de Estado
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Serviços para gerenciamento de dados
+- Observables RxJS para operações assíncronas
+- Estado local de componente quando apropriado
+
+## Tratamento de Erros
+
+A aplicação inclui tratamento abrangente de erros:
+- Validação de formulários com feedback ao usuário
+- Mensagens de erro da API exibidas aos usuários
+- Tratamento de erros de autenticação
+- Tratamento de erros de rede
+
+## Como Contribuir
+
+1. Faça um fork do repositório
+2. Crie uma branch para sua feature
+3. Faça commit das suas alterações
+4. Faça push para a branch
+5. Crie um Pull Request
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT.
