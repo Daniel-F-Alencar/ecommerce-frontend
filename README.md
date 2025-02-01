@@ -73,7 +73,7 @@ src/
 
 1. Clone o repositório:
    ```bash
-   git clone <url-do-repositório>
+   git clone https://github.com/Daniel-F-Alencar/ecommerce-frontend.git
    cd eCommerce_frontend
    ```
 
